@@ -96,7 +96,7 @@ def generate_diff_html(file1_path, file2_path, side_by_side=False):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Generate an interactive side-by-side HTML diff of two files."
+        description="Generate a simple HTML diff of two files."
     )
     parser.add_argument("file1", help="Path to the first input file.")
     parser.add_argument("file2", help="Path to the second input file.")
