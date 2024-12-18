@@ -33,5 +33,5 @@ classifiers = [
 test = ["pytest"]
 
 [project.scripts]
-sample = "diffa:main"
+sample = "diffa:diffa"
 
