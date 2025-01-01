@@ -1,0 +1,15 @@
+body { font-family: Arial, sans-serif; margin: 20px; }
+table.diff { width: 100%; border-collapse: collapse; }
+.diff_header { background-color: #f0f0f0; font-weight: bold; }
+.diff_next { background-color: #f9f9f9; }
+.highlight { background-color: #ececec !important; }
+.diff_add { background-color: rgba(102, 255, 0, 0.6); }
+.diff_chg { background-color: #fff5b1; }
+.diff_sub { background-color: rgba(238, 75, 43, 0.6); }
+.diff td { padding: 4px; white-space: pre-wrap; }
+/* Side-by-side view styling */
+.side-by-side td {
+	width: 50%;
+	vertical-align: top;
+	padding: 8px;
+}
