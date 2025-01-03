@@ -1,13 +1,10 @@
 import os
 import argparse
-from jinja2 import Template
-
-
+from jinja2 import Environment, PackageLoader, select_autoescape
 import difflib
 
 
 def generate_diff_html(file1_path, file2_path):
-    # Read files
     with open(file1_path, "r") as file1, open(file2_path, "r") as file2:
         file1_lines = file1.readlines()
         file2_lines = file2.readlines()
@@ -17,8 +14,12 @@ def generate_diff_html(file1_path, file2_path):
         file1_lines, file2_lines, fromfile="File 1", tofile="File 2", lineterm=""
     )
 
-    with open("diffa/templates/basic_template.html") as file_:
-        template = Template(file_.read())
+    env = Environment(
+        loader=PackageLoader("diffa"),
+        autoescape=select_autoescape()
+    )
+
+    template = env.get_template("basic_template.html")
 
     template_data = {
         "file1_path": file1_path,
@@ -28,7 +29,6 @@ def generate_diff_html(file1_path, file2_path):
     diff_counter = tuple[str, str]
     diff_lines: list[tuple[str, str]] = []
 
-    # Initialize HTML structure for diff tables
     for line in diff:
         if line.startswith("---") or line.startswith("+++"):
             continue  # Skip file header lines
