@@ -4,7 +4,7 @@ from jinja2 import Environment, PackageLoader, select_autoescape
 import difflib
 
 
-def generate_diff_html(file1_path, file2_path):
+def generate_diff_html(file1_path, file2_path, side_by_side=False):
     with open(file1_path, "r") as file1, open(file2_path, "r") as file2:
         file1_lines = file1.readlines()
         file2_lines = file2.readlines()
@@ -19,7 +19,10 @@ def generate_diff_html(file1_path, file2_path):
         autoescape=select_autoescape()
     )
 
-    template = env.get_template("basic_template.html")
+    if side_by_side:
+        template = env.get_template("sbs_template.html")
+    else:
+        template = env.get_template("inline_template.html")
 
     template_data = {
         "file1_path": file1_path,
@@ -52,7 +55,11 @@ def main():
     parser.add_argument("file1", help="Path to the first input file.")
     parser.add_argument("file2", help="Path to the second input file.")
     parser.add_argument("output", help="Path to save the output HTML file.")
-
+    parser.add_argument(
+        "--side-by-side",
+        action="store_true",
+        help="Display diff in a side-by-side view.",
+    )
     args = parser.parse_args()
 
     # Validate input files
@@ -65,7 +72,7 @@ def main():
 
     # Generate HTML diff
     diff_html = generate_diff_html(
-        args.file1, args.file2
+        args.file1, args.file2, side_by_side=args.side_by_side
     )
 
     # Write to output HTML file
