@@ -28,6 +28,7 @@ classifiers = [
   "Programming Language :: Python :: 3.13",
   "Programming Language :: Python :: 3 :: Only",
 ]
+dependencies = ["jinja2"]
 
 [project.urls]
 Homepage = "https://github.com/tomcarter23/diffa"
@@ -35,6 +36,7 @@ Issues = "https://github.com/tomcarter23/diffa/issues"
 
 [tool.setuptools]
 packages = ['diffa']
+
 
 [project.optional-dependencies]
 test = ["pytest"]
