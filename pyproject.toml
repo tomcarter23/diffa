@@ -37,7 +37,6 @@ Issues = "https://github.com/tomcarter23/diffa/issues"
 [tool.setuptools]
 packages = ['diffa']
 
-
 [project.optional-dependencies]
 test = ["pytest"]
 
