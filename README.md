@@ -19,7 +19,7 @@ diffa file1.txt file2.txt output.html
 ````
 
 ### Options
---side-by-side: Adds a side-by-side comparison to the output.
+`--side-by-side`: Adds a side-by-side comparison to the output.
 
 ## The Output
 Open the generated HTML file in your browser to see:
