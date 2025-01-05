@@ -1,4 +1,4 @@
-name: unit tests
+name: e2e tests
 
 on:
   workflow_dispatch: {}
